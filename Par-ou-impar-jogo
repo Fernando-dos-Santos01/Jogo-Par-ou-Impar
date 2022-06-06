@@ -1,0 +1,110 @@
+from random import randint
+from time import sleep
+print('=-'*25)
+print(f"\033[32;1mJOGO DO PAR OU ÍMPAR\033[m")
+print('=-'*25)
+v1 = d1 = 0
+sleep(1.5)
+print("Olá, meu nome é \033[31;1mPitágoras\033[m, o \033[1mseu computador.\033[m")
+sleep(1.5)
+print("Vamos jogar um jogo!")
+sleep(1.5)
+j1 = str(input("Mas primeiramente, \033[1mdiga-me o seu nome:\033[m ")).strip().title()
+print("=-"*10, f"\033[1mSeja bem-vindo, {j1}!!!\033[m", "=-"*10)
+while True:
+    sleep(1)
+    escolha = str(input("Digite a tecla \033[32;1m(P)\033[m para jogar \033[1mPAR\033[m."
+                        "\nDigite a tecla \033[31;1m(I)\033[m para jogar \033[1mÍMPAR\033[m: ")).upper().strip()[0]
+    if escolha != 'I' and escolha != 'P':
+        print("\033[1mComando inválido!\033[m")
+        print("=-"*25)
+    else:
+        if escolha == 'P':
+            print("Você escolheu \033[1mPAR!\033[m")
+        else:
+            print("Você escolheu \033[1mÍMPAR!\033[m")
+        num = int(input("Escolha um número de 0 a 10: "))
+        comp = randint(0, 10)
+        total = num + comp
+        if num > 10 or num < 0:
+            print("\033[1mPor favor, escolha apenas números de 0 a 10.\033[m")
+            print("=-"*25)
+        else:
+            sleep(1.0)
+            print("-"*40)
+            print(f"\033[1m{j1} jogou {num} e Pitágoras jogou {comp}! O total deu {total}!\033[m")
+            print("-"*40)
+            sleep(0.30)
+            if escolha == 'P':
+                if total % 2 == 0:
+                    sleep(1.0)
+                    v1 += 1
+                    print(f"\033[32;1mO número {total} é par. Você venceu!\033[m")
+                    print('=-' * 20)
+                    print("\033[1mVamos jogar novamente!\033[m")
+                    if d1 == 0:
+                        print(f"\033[32;1mJá são {v1} vitórias invíctas!!!\033[m")
+                    else:
+                        print(f"\033[1mPlacar: \033[32m{j1} {v1} \033[m- \033[31;1m{d1} Pitágoras.\033[m")
+                    sleep(0.30)
+                else:
+                    sleep(1.0)
+                    print(f"\033[31;1mO número {total} é ímpar. Você perdeu!\033[m")
+                    print('=-' * 20)
+                    d1 += 1
+                    sleep(1.0)
+                    fim = str(input("Digite a tecla \033[32;1m(S)\033[m para jogar novamente.\n"
+                                    "Digite a tecla \033[31;1m(N)\033[m para encerrar o jogo: ")).upper().strip()
+                    while fim != 'S' and fim != 'N':
+                        print("\033[1mComando inválido!\033[m")
+                        fim = str(input("Digite a tecla \033[32;1m(S)\033[m para jogar novamente.\n"
+                                        "Digite a tecla \033[31;1m(N)\033[m para encerrar o jogo: ")).upper().strip()
+                    if fim == 'S':
+                        print("=-" * 20)
+                        print("\033[1Vamos jogar novamente!\033[m")
+                        print(f"\033[1mPlacar: \033[32m{j1} {v1}\033[m- \033[m {d1} \033[31mPitágoras\033[m")
+                    if fim == 'N':
+                        print("\033[1mObrigado! Foi um bom jogo :)\033[m")
+                        sleep(1)
+                        print('=-' * 20)
+                        break
+            if escolha == 'I':
+                if total % 2 > 0:
+                    sleep(1.0)
+                    v1 += 1
+                    print(f"\033[32;1mO número {total} é ímpar. Você venceu!\033[m")
+                    print('=-' * 20)
+                    print("\033[1mVamos jogar novamente!\033[m")
+                    if d1 == 0:
+                        print(f"\033[32;1mJá são {v1} vitórias invíctas!!!\033[m")
+                    else:
+                        print(f"\033[1mPlacar: \033[32m{j1} {v1} \033[m- \033[31;1m{d1} Pitágoras.\033[m")
+                        sleep(0.30)
+                else:
+                    sleep(1.0)
+                    print(f"\033[31;1mO número {total} é par. Você perdeu!\033[m")
+                    print('=-' * 20)
+                    d1 += 1
+                    sleep(0.30)
+                    fim = str(input("Digite a tecla \033[32;1m(S)\033[m para jogar novamente.\n"
+                                    "Digite a tecla \033[31;1m(N)\033[m para encerrar o jogo: ")).upper().strip()
+                    while fim != 'S' and fim != 'N':
+                        print("\033[1mComando inválido\033[m")
+                        fim = str(input("\033[1mDigite a tecla (S) para jogar novamente.\n"
+                                        "Digite a tecla (N) para encerrar o jogo:\033[m ")).upper().strip()
+                    else:
+                        if fim == 'S':
+                            print("=-" * 20)
+                            print("\033[1mVamos jogar novamente!\033[m")
+                            print(f"\033[1mPlacar: \033[32m{j1} {v1} \033[m- \033[31;1m{d1} Pitágoras.\033[m")
+                        if fim == 'N':
+                            sleep(1)
+                            print("\033[1mObrigado! Foi um bom jogo :)\033[m")
+                            sleep(1)
+                            print('=-' * 20)
+                            break
+print(f"\033[1mFim de jogo!\nSeu recorde foi:\033[m \033[32;1m{v1} vitórias.\033[m")
+sleep(0.30)
+print(f"\033[1mVocê obteve\033[m \033[31;1m{d1} derrotas.\033[m")
+sleep(0.30)
+print(f"\033[1mVocê jogou {v1 + d1} partidas no total.\033[m")
